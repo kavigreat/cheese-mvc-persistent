@@ -1,7 +1,5 @@
 package org.launchcode.controllers;
 
-import org.launchcode.models.Category;
-import org.launchcode.models.data.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

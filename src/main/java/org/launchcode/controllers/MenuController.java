@@ -4,7 +4,6 @@ import org.launchcode.models.Cheese;
 import org.launchcode.models.Menu;
 import org.launchcode.models.data.CheeseDao;
 import org.launchcode.models.data.MenuDao;
-import org.launchcode.models.forms.AddMenuItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +65,7 @@ public class MenuController {
     public String addItem(Model model, @PathVariable int menuId){
 
         Menu menu = menuDao.findOne(menuId);
-        AddMenuItemForm itemForm = new AddMenuItemForm(menu, cheeseDao.findAll());
+        org.launchcode.models.forms.AddMenuItemForm itemForm = new org.launchcode.models.forms.AddMenuItemForm(menu, cheeseDao.findAll());
 
         model.addAttribute("title", "Add item to menu: " + menu.getName());
         model.addAttribute("form",itemForm);
@@ -75,7 +74,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "add-item/{menuID}", method = RequestMethod.POST)
-    public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm itemForm, Errors errors,
+    public String addItem(Model model, @ModelAttribute @Valid org.launchcode.models.forms.AddMenuItemForm itemForm, Errors errors,
                           @PathVariable int menuID){
         if (errors.hasErrors()){
             model.addAttribute("title","Add item");
